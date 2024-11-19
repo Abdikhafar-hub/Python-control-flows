@@ -1,34 +1,25 @@
-# python-control-flows
-def large_power(base, exponent):
+def calculate_discount(price, discount_percent):
     """
-    Check if base raised to the power of exponent is greater than 5000.
+    Calculate the final price after applying a discount.
+    Apply the discount only if it is 20% or higher.
     """
-    # Calculate the result
-    result = base ** exponent
-
-    # Check and return the result
-    if result > 5000:
-        return True
+    # Check if the discount is 20% or higher
+    if discount_percent >= 20:
+        discount = price * (discount_percent / 100)
+        return price - discount
     else:
-        return False
+        # Return the original price if the discount is less than 20%
+        return price
 
-def divisible_by_ten(num):
-    """
-    Check if the number is divisible by 10.
-    """
-    # Check divisibility using modulo
-    if num % 10 == 0:
-        return True
-    else:
-        return False
+# Prompt the user for the original price and discount percentage
+original_price = float(input("Enter the original price of the item: "))
+discount_percent = float(input("Enter the discount percentage: "))
 
-# Main program
-if __name__ == "__main__":
-    # Test large_power
-    base = int(input("Enter the base for large_power: "))
-    exponent = int(input("Enter the exponent for large_power: "))
-    print(f"Is {base}^{exponent} greater than 5000? {large_power(base, exponent)}")
+# Calculate the final price
+final_price = calculate_discount(original_price, discount_percent)
 
-    # Test divisible_by_ten
-    num = int(input("\nEnter a number to check divisibility by 10: "))
-    print(f"Is {num} divisible by 10? {divisible_by_ten(num)}")
+# Print the result
+if discount_percent >= 20:
+    print(f"The final price after applying the discount is: ${final_price:.2f}")
+else:
+    print(f"No discount applied. The original price is: ${original_price:.2f}")
